@@ -737,7 +737,183 @@ div.stButton > button em {
     line-height: 1.4 !important;
     margin-top: 8px !important;
     padding-top: 8px !important;
+    
 }
+
+
+
+/* YOUR MOVE - MOBILE OPTIMIZATION */
+@media (max-width: 600px) {
+
+    .block-container {
+        padding-top: 0.5rem !important;
+        padding-bottom: 1rem !important;
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+    }
+
+    h1 {
+        font-size: 1.5rem !important;
+        margin-bottom: 0 !important;
+    }
+
+    h2, h3 {
+        font-size: 1.2rem !important;
+        line-height: 1.25 !important;
+    }
+
+    div[data-testid="stVideo"] video {
+        max-height: 190px !important;
+        object-fit: cover !important;
+        border-radius: 10px !important;
+    }
+
+    .story-card {
+        padding: 10px 12px !important;
+        margin: 2px 0 !important;
+        font-size: 0.95rem !important;
+        line-height: 1.35 !important;
+    }
+
+    .story-card .subtitle-text {
+        font-size: 0.95rem !important;
+        line-height: 1.35 !important;
+        margin-top: 5px !important;
+        padding-top: 5px !important;
+    }
+
+    div.stButton > button {
+        min-height: 44px !important;
+        padding: 7px 10px !important;
+        font-size: 0.9rem !important;
+        line-height: 1.25 !important;
+    }
+
+    div[data-testid="stProgress"] {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+}
+    
+/* YOUR MOVE - EXTRA COMPACT MOBILE */
+@media (max-width: 600px) {
+
+    .block-container {
+        padding-top: 0.25rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    h1 {
+        font-size: 1.3rem !important;
+    }
+
+    h2, h3 {
+        font-size: 1.05rem !important;
+        margin: 0 !important;
+    }
+
+    /* Reduce spacing between Streamlit elements */
+    div[data-testid="stVerticalBlock"] {
+        gap: 0.35rem !important;
+    }
+
+    div[data-testid="stHorizontalBlock"] {
+        gap: 0.35rem !important;
+    }
+
+    /* Compact cinematic video */
+    div[data-testid="stVideo"] video {
+        max-height: 135px !important;
+        object-fit: cover !important;
+    }
+
+    /* Compact story text */
+    .story-card {
+        padding: 8px 10px !important;
+        margin: 0 !important;
+        font-size: 0.85rem !important;
+        line-height: 1.25 !important;
+    }
+
+    .story-card .subtitle-text {
+        font-size: 0.85rem !important;
+        line-height: 1.25 !important;
+        margin-top: 4px !important;
+        padding-top: 4px !important;
+    }
+
+    /* Smaller choice buttons */
+    div.stButton > button {
+        min-height: 38px !important;
+        padding: 5px 8px !important;
+        font-size: 0.8rem !important;
+        line-height: 1.15 !important;
+    }
+
+    /* Compact progress bar */
+    div[data-testid="stProgress"] {
+        margin: 0 !important;
+    }
+}
+
+    
+/* YOUR MOVE - MOBILE OVERLAP FIX */
+@media (max-width: 600px) {
+
+    /* Restore safe spacing between elements */
+    div[data-testid="stVerticalBlock"] {
+        gap: 0.65rem !important;
+    }
+
+    /* Allow story cards to grow with their text */
+    .story-card {
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* Keep English subtitles inside the card */
+    .story-card .subtitle-text {
+        height: auto !important;
+        overflow: visible !important;
+        margin-bottom: 5px !important;
+    }
+
+    /* Avoid buttons overlapping preceding content */
+    div[data-testid="stButton"] {
+        margin-top: 8px !important;
+    }
+
+    /* Prevent negative spacing on translated titles */
+    h2 + div {
+        margin-top: 0 !important;
+    }
+}
+
+    /* YOUR MOVE - Opening label spacing */
+@media (max-width: 600px) {
+    .opening-label {
+        position: relative;
+        top: -8px;
+        margin-bottom: 4px;
+    }
+}
+
+    /* YOUR MOVE - Chapter header spacing */
+@media (max-width: 600px) {
+    .chapter-label {
+        position: relative;
+        top: -8px;
+        margin-bottom: 6px;
+    }
+}
+
+
+
+
+
 
 
 </style>
@@ -912,13 +1088,11 @@ if not st.session_state.started:
 
     # Responsive cinematic opening layout
     st.markdown(
-        '<div class="gold-text">'
+        '<div class="gold-text opening-label">'
         '🎬 YOUR STORY · YOUR CHOICES · YOUR ENDING'
         '</div>',
         unsafe_allow_html=True,
     )
-
-
 
 
     left_col, right_col = st.columns(
@@ -1048,13 +1222,12 @@ else:
 
             if lang != "fil":
                 st.markdown(
-                    f'<div style="color:#FFD978; font-size:15px; '
-                    f'font-style:italic; margin-top:-5px;">'
+                    f'<div style="color:#FFD978; font-size:17px; '
+                    f'font-style:italic; margin-top:0px; '
+                    f'margin-bottom:10px; line-height:1.4;">'
                     f'{html.escape(translated_title)}</div>',
                     unsafe_allow_html=True,
                 )
-
-
             story_card(
                 description,
                 translated_description if lang != "fil" else None,
@@ -1091,7 +1264,7 @@ else:
         st.progress(st.session_state.step / 3)
 
         st.markdown(
-            f'<div class="gold-text">'
+            f'<div class="gold-text chapter-label">'
             f'✨ KABANATA {chapter} / 3'
             f'</div>',
             unsafe_allow_html=True,
