@@ -637,8 +637,12 @@ h3 {
 
 
 
-/* STORYLOOP AI - RESPONSIVE CINEMATIC VIDEO */
 
+/* =====================================================
+   YOUR MOVE - CONSOLIDATED RESPONSIVE DESIGN
+   ===================================================== */
+
+/* Desktop cinematic video */
 div[data-testid="stVideo"] video {
     width: 100% !important;
     max-height: clamp(140px, 25vh, 260px) !important;
@@ -647,36 +651,11 @@ div[data-testid="stVideo"] video {
     border-radius: 14px !important;
 }
 
-/* Compact spacing around videos */
 div[data-testid="stVideo"] {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin: 0 !important;
 }
 
-/* Laptop screens */
-@media (max-height: 800px) {
-    div[data-testid="stVideo"] video {
-        max-height: 22vh !important;
-    }
-}
-
-/* Mobile phones */
-@media (max-width: 600px) {
-    div[data-testid="stVideo"] video {
-        max-height: 20vh !important;
-        border-radius: 10px !important;
-    }
-
-    .block-container {
-        padding-top: 1rem !important;
-    }
-    
-}
-
-
-
-/* StoryLoop AI - Subtitle settings header */
-
+/* Subtitle settings */
 div[data-testid="stExpander"] summary {
     background: #241d3b !important;
     border-radius: 12px !important;
@@ -687,49 +666,20 @@ div[data-testid="stExpander"] summary * {
     color: #ffffff !important;
 }
 
-
-
-/* YOUR MOVE — bilingual button formatting */
-
-div.stButton > button {
-    white-space: pre-line !important;
-    line-height: 1.55 !important;
-    text-align: center !important;
-    padding: 10px 16px !important;
-}
-
-
-/* YOUR MOVE - Bilingual buttons */
-
-div.stButton > button {
-    white-space: pre-wrap !important;
-    text-align: center !important;
-}
-
+/* Bilingual buttons */
+div.stButton > button,
 div.stButton > button p {
     white-space: pre-wrap !important;
+    text-align: center !important;
+    line-height: 1.35 !important;
 }
 
-/* YOUR MOVE - English button subtitle */
-
-div.stButton > button p {
-    white-space: pre-wrap !important;
-    line-height: 1.6 !important;
-}
-
-div.stButton > button p::first-line {
-    color: #FFFFFF;
-}
-
-/* Gold color for italic English button subtitles */
 div.stButton > button em {
     color: #FFD978 !important;
     font-style: italic !important;
 }
 
-
-/* YOUR MOVE - Story subtitles */
-
+/* Story translation */
 .story-card .subtitle-text {
     color: #FFD978 !important;
     font-size: 20px !important;
@@ -737,181 +687,106 @@ div.stButton > button em {
     line-height: 1.4 !important;
     margin-top: 8px !important;
     padding-top: 8px !important;
-    
 }
 
+/* =====================================================
+   MOBILE ONLY
+   ===================================================== */
 
-
-/* YOUR MOVE - MOBILE OPTIMIZATION */
-@media (max-width: 600px) {
+@media screen and (max-width: 767px) {
 
     .block-container {
         padding-top: 0.5rem !important;
-        padding-bottom: 1rem !important;
+        padding-bottom: 0.75rem !important;
         padding-left: 0.75rem !important;
         padding-right: 0.75rem !important;
     }
 
+    /* Compact typography */
     h1 {
-        font-size: 1.5rem !important;
-        margin-bottom: 0 !important;
+        font-size: 22px !important;
+        line-height: 1.2 !important;
     }
 
     h2, h3 {
-        font-size: 1.2rem !important;
+        font-size: 18px !important;
         line-height: 1.25 !important;
+        margin: 0 !important;
     }
 
+    /* Controlled spacing */
+    div[data-testid="stVerticalBlock"] {
+        gap: 0.45rem !important;
+    }
+
+    div[data-testid="stHorizontalBlock"] {
+        gap: 0.45rem !important;
+    }
+
+    /* Cinematic video */
     div[data-testid="stVideo"] video {
-        max-height: 190px !important;
+        width: 100% !important;
+        max-height: 165px !important;
         object-fit: cover !important;
         border-radius: 10px !important;
     }
 
+    /* Story text */
     .story-card {
         padding: 10px 12px !important;
-        margin: 2px 0 !important;
-        font-size: 0.95rem !important;
+        margin: 0 !important;
+        height: auto !important;
+        overflow: visible !important;
+        font-size: 14px !important;
         line-height: 1.35 !important;
     }
 
     .story-card .subtitle-text {
-        font-size: 0.95rem !important;
+        color: #FFD978 !important;
+        font-size: 14px !important;
         line-height: 1.35 !important;
+        font-style: italic !important;
         margin-top: 5px !important;
         padding-top: 5px !important;
-    }
-
-    div.stButton > button {
-        min-height: 44px !important;
-        padding: 7px 10px !important;
-        font-size: 0.9rem !important;
-        line-height: 1.25 !important;
-    }
-
-    div[data-testid="stProgress"] {
-        margin-top: 0 !important;
         margin-bottom: 0 !important;
     }
-    
-}
-    
-/* YOUR MOVE - EXTRA COMPACT MOBILE */
-@media (max-width: 600px) {
 
-    .block-container {
-        padding-top: 0.25rem !important;
-        padding-bottom: 0.5rem !important;
-    }
-
-    h1 {
-        font-size: 1.3rem !important;
-    }
-
-    h2, h3 {
-        font-size: 1.05rem !important;
-        margin: 0 !important;
-    }
-
-    /* Reduce spacing between Streamlit elements */
-    div[data-testid="stVerticalBlock"] {
-        gap: 0.35rem !important;
-    }
-
-    div[data-testid="stHorizontalBlock"] {
-        gap: 0.35rem !important;
-    }
-
-    /* Compact cinematic video */
-    div[data-testid="stVideo"] video {
-        max-height: 135px !important;
-        object-fit: cover !important;
-    }
-
-    /* Compact story text */
-    .story-card {
-        padding: 8px 10px !important;
-        margin: 0 !important;
-        font-size: 0.85rem !important;
-        line-height: 1.25 !important;
-    }
-
-    .story-card .subtitle-text {
-        font-size: 0.85rem !important;
-        line-height: 1.25 !important;
-        margin-top: 4px !important;
-        padding-top: 4px !important;
-    }
-
-    /* Smaller choice buttons */
+    /* Decision buttons */
     div.stButton > button {
-        min-height: 38px !important;
-        padding: 5px 8px !important;
-        font-size: 0.8rem !important;
-        line-height: 1.15 !important;
+        min-height: 44px !important;
+        padding: 6px 10px !important;
+        font-size: 14px !important;
+        line-height: 1.25 !important;
     }
 
-    /* Compact progress bar */
+    div.stButton > button p {
+        font-size: 14px !important;
+        line-height: 1.25 !important;
+    }
+
+    /* Progress bar */
     div[data-testid="stProgress"] {
         margin: 0 !important;
     }
-}
 
-    
-/* YOUR MOVE - MOBILE OVERLAP FIX */
-@media (max-width: 600px) {
-
-    /* Restore safe spacing between elements */
-    div[data-testid="stVerticalBlock"] {
-        gap: 0.65rem !important;
-    }
-
-    /* Allow story cards to grow with their text */
-    .story-card {
-        height: auto !important;
-        min-height: 0 !important;
-        overflow: visible !important;
-        margin-bottom: 10px !important;
-    }
-
-    /* Keep English subtitles inside the card */
-    .story-card .subtitle-text {
-        height: auto !important;
-        overflow: visible !important;
-        margin-bottom: 5px !important;
-    }
-
-    /* Avoid buttons overlapping preceding content */
-    div[data-testid="stButton"] {
-        margin-top: 8px !important;
-    }
-
-    /* Prevent negative spacing on translated titles */
-    h2 + div {
-        margin-top: 0 !important;
-    }
-}
-
-    /* YOUR MOVE - Opening label spacing */
-@media (max-width: 600px) {
-    .opening-label {
-        position: relative;
-        top: -8px;
-        margin-bottom: 4px;
-    }
-}
-
-    /* YOUR MOVE - Chapter header spacing */
-@media (max-width: 600px) {
+    /* Opening and chapter labels */
+    .opening-label,
     .chapter-label {
-        position: relative;
-        top: -8px;
-        margin-bottom: 6px;
+        position: static !important;
+        margin-top: 0 !important;
+        margin-bottom: 8px !important;
+        line-height: 1.35 !important;
     }
+
+    /* Smaller English title and question subtitles */
+    div[style*="font-style:italic"] {
+        font-size: 14px !important;
+        line-height: 1.3 !important;
+        margin-top: 0 !important;
+        margin-bottom: 4px !important;
+    }
+
 }
-
-
-
 
 
 
@@ -1119,7 +994,7 @@ if not st.session_state.started:
 
         if lang != "fil":
             st.markdown(
-                f'<div style="color:#FFD978; font-size:20px; '
+                f'<div style="color:#FFD978; font-size:14px; '
                 f'font-style:italic; margin-top:-10px; '
                 f'margin-bottom:8px;">'
                 f'{html.escape(translated["title"])}</div>',
@@ -1222,7 +1097,7 @@ else:
 
             if lang != "fil":
                 st.markdown(
-                    f'<div style="color:#FFD978; font-size:17px; '
+                    f'<div style="color:#FFD978; font-size:14px; '
                     f'font-style:italic; margin-top:0px; '
                     f'margin-bottom:10px; line-height:1.4;">'
                     f'{html.escape(translated_title)}</div>',
@@ -1306,7 +1181,7 @@ else:
 
             if lang != "fil":
                 st.markdown(
-                    f'<div style="color:#FFD978; font-size:20px; '
+                    f'<div style="color:#FFD978; font-size:14px; '
                     f'font-style:italic; margin-top:-10px; '
                     f'margin-bottom:8px;">'
                     f'{html.escape(UI[lang]["question"])}</div>',
