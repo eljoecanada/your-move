@@ -12,7 +12,7 @@ import streamlit as st
 st.set_page_config(
     page_title="YOUR MOVE | What Would You Do?",
     page_icon="✨",
-    layout="centered",
+    layout="wide",
     initial_sidebar_state="collapsed",
 )
 
@@ -362,435 +362,120 @@ STORIES = {
 
 st.markdown("""
 <style>
+/* YOUR MOVE — single responsive stylesheet */
 .stApp {
-    background:
-        radial-gradient(circle at 80% 0%, #35205c, transparent 48%),
-        linear-gradient(155deg, #0b1120, #1d1535);
-    color: #f9f7ff;
+  background: radial-gradient(circle at 80% 0%, #35205c, transparent 48%),
+              linear-gradient(155deg, #0b1120, #1d1535);
+  color: #f9f7ff;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
-
 .block-container {
-    max-width: 740px;
-    padding-top: 1.5rem;
-    padding-bottom: 4rem;
+  max-width: 1250px !important;
+  padding: 2rem 1.4rem 1.5rem !important;
 }
-
-h1, h2, h3, p {
-    color: #f9f7ff !important;
-}
-
-.stCaption, [data-testid="stCaptionContainer"] {
-    color: #c7bce5 !important;
-}
-
-.hero-panel {
-    padding: 30px 22px;
-    border-radius: 24px;
-    background:
-        radial-gradient(circle at 75% 20%, #7651ad55, transparent 45%),
-        linear-gradient(135deg, #31264e, #17182e);
-    border: 1px solid #7359a4;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.hero-icon {
-    font-size: 72px;
-    margin-bottom: 12px;
-}
-
-.hero-title {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: #f4c76d;
-}
-
+h1, h2, h3, p { color: #f9f7ff !important; }
+h1 { font-size: clamp(24px, 2.4vw, 32px) !important; line-height: 1.2 !important; }
+h2 { font-size: clamp(19px, 2vw, 27px) !important; line-height: 1.25 !important; }
+h3 { font-size: clamp(17px, 1.5vw, 22px) !important; line-height: 1.25 !important; }
+[data-testid="stCaptionContainer"] { color: #c7bce5 !important; }
+.gold-text { color: #f4c76d; font-weight: 700; letter-spacing: .035em; }
+.opening-label, .chapter-label { margin: 0 0 8px; line-height: 1.4; }
 .story-card {
-    background: linear-gradient(140deg, #292141, #181a31);
-    border: 1px solid #67538e;
-    border-radius: 20px;
-    padding: 24px;
-    margin: 16px 0;
-    color: #ffffff;
-    line-height: 1.8;
-    font-size: 1.13rem;
+  background: linear-gradient(140deg, #292141, #181a31);
+  border: 1px solid #67538e;
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin: 4px 0;
+  color: #fff;
+  font-size: clamp(14px, 1.15vw, 17px);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
 }
-
-.subtitle-text {
-    color: #d6c7ff;
-    font-size: 0.96rem;
-    line-height: 1.7;
-    border-top: 1px solid #58466e;
-    margin-top: 14px;
-    padding-top: 12px;
-}
-
-.gold-text {
-    color: #f4c76d;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-}
-
-div.stButton > button {
-    width: 100%;
-    min-height: 66px;
-    background: linear-gradient(110deg, #39265e, #51338b);
-    border: 1px solid #9471e8;
-    border-radius: 16px;
-    color: #ffffff;
-    font-weight: 650;
-    text-align: left;
-    white-space: pre-wrap;
-    padding: 12px 18px;
-}
-
-div.stButton > button:hover {
-    background: #7452bc;
-    color: #ffffff;
-    border-color: #f4c76d;
-}
-
-div[data-testid="stExpander"] {
-    background: #241d3b;
-    border: 1px solid #65538b;
-    border-radius: 12px;
-}
-
-div[data-testid="stExpander"] summary,
-div[data-testid="stExpander"] summary * {
-    color: #ffffff !important;
-}
-
-div[data-testid="stWidgetLabel"] *,
-div[data-testid="stWidgetLabel"] {
-    color: #f9f7ff !important;
-}
-
-.ending-card {
-    background: linear-gradient(135deg, #50367a, #231c3c);
-    border: 2px solid #e7bb65;
-    border-radius: 24px;
-    padding: 30px 20px;
-    text-align: center;
-    margin: 22px 0;
-    box-shadow: 0 0 32px #e7bb6520;
-}
-
-.ending-title {
-    color: #f4c76d;
-    font-size: 1.55rem;
-    font-weight: 800;
-}
-
-@media (max-width: 600px) {
-    .block-container {
-        padding-left: 1rem;
-        padding-right: 1rem;
-    }
-    .hero-title {
-        font-size: 1.35rem;
-    }
-}
-
-
-
-
-/* STORYLOOP AI - COMPACT RESPONSIVE LAYOUT */
-
-.block-container {
-    max-width: 1250px !important;
-    padding-top: 3.5rem !important;
-    padding-bottom: 1rem !important;
-}
-
-h1 {
-    font-size: clamp(1.6rem, 3vw, 2rem) !important;
-    line-height: 1.3 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0.25rem !important;
-}
-
-
-h2 {
-    font-size: clamp(1.3rem, 2.5vw, 1.7rem) !important;
-    line-height: 1.25 !important;
-}
-
-.stApp {
-    font-size: 16px;
-}
-
-.story-card {
-    padding: 14px 18px !important;
-    margin: 6px 0 !important;
-    font-size: 1.05rem !important;
-    line-height: 1.5 !important;
-    border-radius: 14px !important;
-}
-
-.subtitle-text {
-    font-size: 0.95rem !important;
-    line-height: 1.4 !important;
-    margin-top: 8px !important;
-    padding-top: 8px !important;
-}
-
-div.stButton > button {
-    width: 100% !important;
-    min-height: 52px !important;
-    padding: 9px 16px !important;
-    font-size: 1rem !important;
-    line-height: 1.35 !important;
-    border-radius: 12px !important;
-}
-
-div.stButton > button[kind="primary"] {
-    background: linear-gradient(
-        100deg, #7456e8, #a05de8
-    ) !important;
-    color: white !important;
-    font-weight: 700 !important;
-    text-align: center !important;
-    border: 1px solid #b99aff !important;
-}
-
-div[data-testid="stExpander"] {
-    margin-bottom: 0 !important;
-}
-
-div[data-testid="stCaptionContainer"] {
-    font-size: 0.9rem !important;
-    line-height: 1.35 !important;
-}
-
-@media (max-width: 600px) {
-    .block-container {
-        max-width: 860px !important;
-        padding-top: 1.5rem !important;
-        padding-bottom: 1rem !important;
-    }
-
-    .story-card {
-        padding: 12px !important;
-    }
-}
-
-
-
-
-/* STORYLOOP GAMEPLAY DESIGN */
-
-div[data-testid="stImage"] img {
-    width: 100%;
-    max-height: 18vh;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 16px;
-}
-
-div.stButton > button {
-    width: 100% !important;
-    min-height: 60px !important;
-    text-align: left !important;
-    padding: 12px 18px !important;
-    font-size: 1rem !important;
-    border-radius: 14px !important;
-}
-
-div.stButton > button:hover {
-    border-color: #f4c76d !important;
-    background: #6445a3 !important;
-}
-
-
-/* COMPACT GAMEPLAY SPACING */
-
-div[data-testid="stProgress"] {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-div[data-testid="stImage"] {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-.story-card {
-    padding: 12px 16px !important;
-    margin: 4px 0 !important;
-    line-height: 1.4 !important;
-}
-
-div.stButton > button {
-    min-height: 48px !important;
-    padding: 8px 14px !important;
-    line-height: 1.25 !important;
-}
-
-h3 {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-
-
-
-
-
-
-/* =====================================================
-   YOUR MOVE - CONSOLIDATED RESPONSIVE DESIGN
-   ===================================================== */
-
-/* Desktop cinematic video */
-div[data-testid="stVideo"] video {
-    width: 100% !important;
-    max-height: clamp(140px, 25vh, 260px) !important;
-    object-fit: cover !important;
-    object-position: center !important;
-    border-radius: 14px !important;
-}
-
-div[data-testid="stVideo"] {
-    margin: 0 !important;
-}
-
-/* Subtitle settings */
-div[data-testid="stExpander"] summary {
-    background: #241d3b !important;
-    border-radius: 12px !important;
-}
-
-div[data-testid="stExpander"] summary,
-div[data-testid="stExpander"] summary * {
-    color: #ffffff !important;
-}
-
-/* Bilingual buttons */
-div.stButton > button,
-div.stButton > button p {
-    white-space: pre-wrap !important;
-    text-align: center !important;
-    line-height: 1.35 !important;
-}
-
-div.stButton > button em {
-    color: #FFD978 !important;
-    font-style: italic !important;
-}
-
-/* Story translation */
 .story-card .subtitle-text {
-    color: #FFD978 !important;
-    font-size: 20px !important;
-    font-style: italic !important;
-    line-height: 1.4 !important;
-    margin-top: 8px !important;
-    padding-top: 8px !important;
+  color: #FFD978;
+  font-size: clamp(14px, 1.15vw, 17px);
+  font-style: italic;
+  line-height: 1.4;
+  border-top: 1px solid #58466e;
+  margin-top: 8px;
+  padding-top: 8px;
 }
-
-/* =====================================================
-   MOBILE ONLY
-   ===================================================== */
-
+.translated-heading {
+  color: #FFD978 !important;
+  font-size: clamp(14px, 1.15vw, 17px) !important;
+  font-style: italic;
+  line-height: 1.35;
+  margin: 0 0 8px;
+}
+div.stButton > button {
+  width: 100% !important;
+  min-height: 48px !important;
+  background: linear-gradient(110deg, #39265e, #51338b) !important;
+  border: 1px solid #9471e8 !important;
+  border-radius: 12px !important;
+  color: #fff !important;
+  padding: 8px 14px !important;
+  text-align: center !important;
+}
+div.stButton > button p {
+  white-space: pre-wrap !important;
+  text-align: center !important;
+  font-size: clamp(13px, 1vw, 16px) !important;
+  line-height: 1.3 !important;
+}
+div.stButton > button em { color: #FFD978 !important; font-style: italic !important; }
+div.stButton > button:hover { background: #6445a3 !important; border-color: #f4c76d !important; }
+div.stButton > button[kind="primary"] {
+  background: linear-gradient(100deg, #7456e8, #a05de8) !important;
+  border-color: #b99aff !important;
+}
+div[data-testid="stExpander"] {
+  background: #241d3b;
+  border: 1px solid #65538b;
+  border-radius: 12px;
+}
+div[data-testid="stExpander"] summary,
+div[data-testid="stExpander"] summary * { color: #fff !important; }
+div[data-testid="stVideo"] video {
+  width: 100% !important;
+  max-height: 260px !important;
+  object-fit: cover !important;
+  border-radius: 14px !important;
+}
+div[data-testid="stProgress"] { margin: 0 !important; }
 @media screen and (max-width: 767px) {
-
-    .block-container {
-        padding-top: 0.5rem !important;
-        padding-bottom: 0.75rem !important;
-        padding-left: 0.75rem !important;
-        padding-right: 0.75rem !important;
-    }
-
-    /* Compact typography */
-    h1 {
-        font-size: 22px !important;
-        line-height: 1.2 !important;
-    }
-
-    h2, h3 {
-        font-size: 18px !important;
-        line-height: 1.25 !important;
-        margin: 0 !important;
-    }
-
-    /* Controlled spacing */
-    div[data-testid="stVerticalBlock"] {
-        gap: 0.45rem !important;
-    }
-
-    div[data-testid="stHorizontalBlock"] {
-        gap: 0.45rem !important;
-    }
-
-    /* Cinematic video */
-    div[data-testid="stVideo"] video {
-        width: 100% !important;
-        max-height: 165px !important;
-        object-fit: cover !important;
-        border-radius: 10px !important;
-    }
-
-    /* Story text */
-    .story-card {
-        padding: 10px 12px !important;
-        margin: 0 !important;
-        height: auto !important;
-        overflow: visible !important;
-        font-size: 14px !important;
-        line-height: 1.35 !important;
-    }
-
-    .story-card .subtitle-text {
-        color: #FFD978 !important;
-        font-size: 14px !important;
-        line-height: 1.35 !important;
-        font-style: italic !important;
-        margin-top: 5px !important;
-        padding-top: 5px !important;
-        margin-bottom: 0 !important;
-    }
-
-    /* Decision buttons */
-    div.stButton > button {
-        min-height: 44px !important;
-        padding: 6px 10px !important;
-        font-size: 14px !important;
-        line-height: 1.25 !important;
-    }
-
-    div.stButton > button p {
-        font-size: 14px !important;
-        line-height: 1.25 !important;
-    }
-
-    /* Progress bar */
-    div[data-testid="stProgress"] {
-        margin: 0 !important;
-    }
-
-    /* Opening and chapter labels */
-    .opening-label,
-    .chapter-label {
-        position: static !important;
-        margin-top: 0 !important;
-        margin-bottom: 8px !important;
-        line-height: 1.35 !important;
-    }
-
-    /* Smaller English title and question subtitles */
-    div[style*="font-style:italic"] {
-        font-size: 14px !important;
-        line-height: 1.3 !important;
-        margin-top: 0 !important;
-        margin-bottom: 4px !important;
-    }
-
+  .block-container { padding: .5rem .7rem 1rem !important; }
+  h1 { font-size: 21px !important; }
+  h2 { font-size: 17px !important; }
+  h3 { font-size: 16px !important; }
+  div[data-testid="stVerticalBlock"] { gap: .45rem !important; }
+  div[data-testid="stHorizontalBlock"] { gap: .45rem !important; }
+  .opening-label, .chapter-label { margin: 0 0 6px !important; }
+  div[data-testid="stVideo"] video {
+    max-height: min(36vw, 165px) !important;
+    border-radius: 10px !important;
+  }
+  .story-card {
+    padding: 9px 11px !important;
+    margin: 2px 0 !important;
+    font-size: 14px !important;
+    line-height: 1.32 !important;
+  }
+  .story-card .subtitle-text {
+    font-size: 14px !important;
+    line-height: 1.32 !important;
+    margin-top: 5px !important;
+    padding-top: 5px !important;
+  }
+  .translated-heading {
+    font-size: 14px !important;
+    line-height: 1.3 !important;
+    margin: 0 0 6px !important;
+  }
+  div.stButton > button { min-height: 44px !important; padding: 6px 10px !important; }
+  div.stButton > button p { font-size: 13px !important; line-height: 1.25 !important; }
 }
-
-
-
-
 </style>
 """, unsafe_allow_html=True)
 
@@ -994,9 +679,7 @@ if not st.session_state.started:
 
         if lang != "fil":
             st.markdown(
-                f'<div style="color:#FFD978; font-size:14px; '
-                f'font-style:italic; margin-top:-10px; '
-                f'margin-bottom:8px;">'
+                '<div class="translated-heading">'
                 f'{html.escape(translated["title"])}</div>',
                 unsafe_allow_html=True,
             )
@@ -1097,9 +780,7 @@ else:
 
             if lang != "fil":
                 st.markdown(
-                    f'<div style="color:#FFD978; font-size:14px; '
-                    f'font-style:italic; margin-top:0px; '
-                    f'margin-bottom:10px; line-height:1.4;">'
+                    '<div class="translated-heading">'
                     f'{html.escape(translated_title)}</div>',
                     unsafe_allow_html=True,
                 )
@@ -1181,9 +862,7 @@ else:
 
             if lang != "fil":
                 st.markdown(
-                    f'<div style="color:#FFD978; font-size:14px; '
-                    f'font-style:italic; margin-top:-10px; '
-                    f'margin-bottom:8px;">'
+                    '<div class="translated-heading">'
                     f'{html.escape(UI[lang]["question"])}</div>',
                     unsafe_allow_html=True,
                 )
